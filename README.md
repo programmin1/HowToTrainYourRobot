@@ -11,4 +11,6 @@ Main.glade - An xml layout of the window, used by Main.py - Open it in Glade edi
 
 StepperShieldTest - Arduino motor shield controller - Turns one-letter commands through USB serial into motor movement.
 
+faceDetectThreadCorrelationCV2FaceSmile.py - Computer software to connect to the Arduino - Assuming the plugged in usb shows up as /dev/ttyACM0, and you have webcam working, this should spin the candy dispenser when you smile at the camera.
+
 Code examples based on Dlib.net examples under Boost software license.

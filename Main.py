@@ -12,7 +12,7 @@ from time import sleep
 from skimage import io
 
 #IMGLAB compiled binary:
-IMGLAB = '~/Progs/dlib-18.16/tools/imglab/build/imglab'
+IMGLAB = '~/Progs/dlib-19.13/tools/imglab/build/imglab'
 #Trainer example compiled binary:
 TRAINER = '~/Progs/dlib-18.16/examples/build/fhog_object_detector_ex'
 
@@ -30,10 +30,33 @@ class ExplainerWin():
 		self.window = self.builder.get_object("window1")
 		self.window.connect("destroy", Gtk.main_quit)
 		self.imgnum = 0
+		#Adjust as necessary:
+		self.extraparam = '--device /dev/v4l/by-id/usb-Microsoft_Microsoft®_LifeCam_VX-2000-video-index0'
 		
 		self.tmp = "/tmp/train"+datetime.datetime.strftime(datetime.datetime.now(), '%H-%M-%S')
 		os.mkdir( self.tmp )
 		print( self.tmp )
+		css = b""".large {
+    color: blue;
+    font-weight: bolder;
+    font-size:32px;
+    border-style: solid;
+    border-width: 2px 0 2px 2px;
+    padding: 8px;
+}"""
+		style_provider = Gtk.CssProvider()
+		style_provider.load_from_data(css)
+
+		Gtk.StyleContext.add_provider_for_screen(
+			Gdk.Screen.get_default(),
+			style_provider,
+			Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+		)
+		self.builder.get_object("button1").set_alignment(0,0);
+		self.builder.get_object("button2").set_alignment(0,0);
+		self.builder.get_object("button3").set_alignment(0,0);
+		self.builder.get_object("button4").set_alignment(0,0);
+		self.builder.get_object("button5").set_alignment(0,0);
 	
 	def step1(self, btn):
 		self.imgnum += 1
@@ -41,7 +64,7 @@ class ExplainerWin():
 		#cam = cv2.VideoCapture(0)
 		#ret, frame = cam.read()
 		#imagecontrol = self.builder.get_object("image")
-		os.system( 'fswebcam %s/img%s.jpg' % (self.tmp, self.imgnum) )
+		os.system( 'fswebcam %s %s/img%s.jpg' % (self.extraparam, self.tmp, self.imgnum) )
 		os.system( 'xdg-open %s/img%s.jpg' % (self.tmp, self.imgnum) )
 		
 	def step2(self, btn):
@@ -94,7 +117,7 @@ class ExplainerWin():
 	def step5(self, btn):
 		#Take photo
 		self.imgnum += 1
-		os.system( 'fswebcam %s/img%s.jpg' % (self.tmp, self.imgnum) )
+		os.system( 'fswebcam %s %s/img%s.jpg' % (self.extraparam, self.tmp, self.imgnum) )
 		
 		detector = dlib.simple_object_detector( os.path.join( self.tmp, "detector.svm" ) )
 		win = dlib.image_window()

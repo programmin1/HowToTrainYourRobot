@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.16.1 -->
+<!-- Generated with glade 3.22.2 -->
 <interface>
   <requires lib="gtk+" version="3.10"/>
   <object class="GtkWindow" id="window1">
     <property name="can_focus">False</property>
+    <child type="titlebar">
+      <placeholder/>
+    </child>
     <child>
       <object class="GtkBox" id="box1">
         <property name="visible">True</property>
@@ -28,6 +31,9 @@
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <signal name="clicked" handler="btn1" swapped="no"/>
+            <style>
+              <class name="large"/>
+            </style>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -42,6 +48,9 @@
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <signal name="clicked" handler="btn2" swapped="no"/>
+            <style>
+              <class name="large"/>
+            </style>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -56,6 +65,9 @@
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <signal name="clicked" handler="btn3" swapped="no"/>
+            <style>
+              <class name="large"/>
+            </style>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -70,6 +82,9 @@
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <signal name="clicked" handler="btn4" swapped="no"/>
+            <style>
+              <class name="large"/>
+            </style>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -84,6 +99,9 @@
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
             <signal name="clicked" handler="btn5" swapped="no"/>
+            <style>
+              <class name="large"/>
+            </style>
           </object>
           <packing>
             <property name="expand">False</property>

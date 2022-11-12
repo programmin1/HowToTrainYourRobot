@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import gi
+gi.require_version("Gtk", "3.0") # Do not try GTK4 if available, Glade file is GTK3
 from gi.repository import Gtk, GdkPixbuf, Gdk
 import urllib
 import os
@@ -12,7 +14,7 @@ from time import sleep
 from skimage import io
 
 #IMGLAB compiled binary:
-IMGLAB = '~/Progs/dlib-19.13/tools/imglab/build/imglab'
+IMGLAB = '~/Progs/dlib-19.24/tools/imglab/build/imglab'
 #Trainer example compiled binary:
 TRAINER = '~/Progs/dlib-18.16/examples/build/fhog_object_detector_ex'
 
@@ -31,7 +33,10 @@ class ExplainerWin():
 		self.window.connect("destroy", Gtk.main_quit)
 		self.imgnum = 0
 		#Adjust as necessary:
-		self.extraparam = '--device /dev/v4l/by-id/usb-Microsoft_Microsoft®_LifeCam_VX-2000-video-index0'
+		camera = 'usb-Microsoft_Microsoft®_LifeCam_VX-2000-video'
+		if os.environ.get('WEBCAM'):
+			camera = os.environ.get('WEBCAM')
+		self.extraparam = '--device /dev/v4l/by-id/'+camera+'-index0'
 		
 		self.tmp = "/tmp/train"+datetime.datetime.strftime(datetime.datetime.now(), '%H-%M-%S')
 		os.mkdir( self.tmp )
@@ -65,7 +70,9 @@ class ExplainerWin():
 		#ret, frame = cam.read()
 		#imagecontrol = self.builder.get_object("image")
 		os.system( 'fswebcam %s %s/img%s.jpg' % (self.extraparam, self.tmp, self.imgnum) )
-		os.system( 'xdg-open %s/img%s.jpg' % (self.tmp, self.imgnum) )
+		if os.system( 'xdg-open %s/img%s.jpg' % (self.tmp, self.imgnum) ):
+			#nonzero exit
+			print("Use env variable, WEBCAM=nameofcam if it exists as /dev/v4l/by-id/nameofcam-index0")
 		
 	def step2(self, btn):
 		os.system( IMGLAB + ' -c %s/training.xml %s'  % (self.tmp, self.tmp) )

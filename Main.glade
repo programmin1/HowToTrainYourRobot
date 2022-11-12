@@ -1,22 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.2 -->
+<!-- Generated with glade 3.38.2 -->
 <interface>
   <requires lib="gtk+" version="3.10"/>
   <object class="GtkWindow" id="window1">
-    <property name="can_focus">False</property>
-    <child type="titlebar">
-      <placeholder/>
-    </child>
+    <property name="can-focus">False</property>
     <child>
       <object class="GtkBox" id="box1">
         <property name="visible">True</property>
-        <property name="can_focus">False</property>
+        <property name="can-focus">False</property>
         <property name="orientation">vertical</property>
         <child>
           <object class="GtkImage" id="image">
             <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="stock">gtk-missing-image</property>
+            <property name="can-focus">False</property>
           </object>
           <packing>
             <property name="expand">True</property>
@@ -28,8 +24,8 @@
           <object class="GtkButton" id="button1">
             <property name="label" translatable="yes">1) Take Pictures.</property>
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
             <signal name="clicked" handler="btn1" swapped="no"/>
             <style>
               <class name="large"/>
@@ -45,8 +41,8 @@
           <object class="GtkButton" id="button2">
             <property name="label" translatable="yes">2) Imglab start xml file.</property>
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
             <signal name="clicked" handler="btn2" swapped="no"/>
             <style>
               <class name="large"/>
@@ -62,8 +58,8 @@
           <object class="GtkButton" id="button3">
             <property name="label" translatable="yes">3) Imglab edit the xml file - mark objects with rectangles.</property>
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
             <signal name="clicked" handler="btn3" swapped="no"/>
             <style>
               <class name="large"/>
@@ -79,8 +75,8 @@
           <object class="GtkButton" id="button4">
             <property name="label" translatable="yes">4) Train...</property>
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
             <signal name="clicked" handler="btn4" swapped="no"/>
             <style>
               <class name="large"/>
@@ -96,8 +92,8 @@
           <object class="GtkButton" id="button5">
             <property name="label" translatable="yes">5) Recognize?</property>
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
             <signal name="clicked" handler="btn5" swapped="no"/>
             <style>
               <class name="large"/>
